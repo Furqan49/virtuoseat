@@ -32,7 +32,7 @@ function Store() {
         },
     ];
 
-    const FilteredData = showFor == null ? productData : productData.filter(category => category.category == showFor);
+    const FilteredData = showFor === null ? productData : productData.filter(category => category.category == showFor);
     console.log(FilteredData)
 
     return (
@@ -44,7 +44,7 @@ function Store() {
             <div className="buttons">
                 <ProductButton text={"All"}
                     isActive={
-                        showFor == null
+                        showFor === null
                     }
                     onClick={
                         () => {
@@ -53,7 +53,7 @@ function Store() {
                     }/>
                 <ProductButton text={"Electronics"}
                     isActive={
-                        showFor == 1
+                        showFor === 1
                     }
                     onClick={
                         () => {
@@ -62,7 +62,7 @@ function Store() {
                     }/>
                 <ProductButton text={"Groceries"}
                     isActive={
-                        showFor == 2
+                        showFor === 2
                     }
                     onClick={
                         () => {
@@ -71,7 +71,7 @@ function Store() {
                     }/>
                 <ProductButton text={"Mobile"}
                     isActive={
-                        showFor == 3
+                        showFor === 3
                     }
                     onClick={
                         () => {
@@ -80,7 +80,7 @@ function Store() {
                     }/>
                 <ProductButton text={"Laptops"}
                     isActive={
-                        showFor == 4
+                        showFor === 4
                     }
                     onClick={
                         () => {
@@ -89,7 +89,7 @@ function Store() {
                     }/>
                 <ProductButton text={"Medicines"}
                     isActive={
-                        showFor == 5
+                        showFor === 5
                     }
                     onClick={
                         () => {

@@ -2,15 +2,24 @@ import React from "react";
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
 
 import AuthedLayout from "./layouts/authed/AuthedLayout"
+
 import HomePage from "./view/home/HomePage"
 import LatestVideos from "./view/latestVideos/LatestVideos.jsx"
 import TrendingVideos from "./view/trendingVideos/TrendingVideos"
 import TopVideos from "./view/topVideos/TopVideos"
+
 import Profile from "./view/profile/Profile"
+
 import Store from "./view/menus/store/Store";
 import Videos from "./view/menus/videos/Videos.jsx"
 import Members from "./view/menus/members/Members"
 import Audio from "./view/menus/audio/Audio"
+import ArtistChannel from "./view/menus/artists/channel/Channel"
+import ArtistVideos from "./view/menus/artists/videos/Videos"
+import CategoryBlogs from "./view/menus/categories/blogs/CategoryBlogs";
+import CategoryChannels from "./view/menus/categories/channels/CategoryChannels";
+import CategoryVideos from "./view/menus/categories/videos/CategoryVideos";
+import Channels from "./view/menus/channels/Channels";
 
 
 const Routes = () => {
@@ -28,10 +37,10 @@ const Routes = () => {
                     component={TrendingVideos}/>
 
                 <AuthedRoute path="/topvideos"
-                    component={TopVideos}/>
+                    component={TopVideos}/> {/* PROFILE */}
 
                 <AuthedRoute path="/profile"
-                    component={Profile}/>
+                    component={Profile}/> {/* MENUS */}
 
                 <AuthedRoute path="/store"
                     component={Store}/>
@@ -44,6 +53,25 @@ const Routes = () => {
 
                 <AuthedRoute path="/audio"
                     component={Audio}/>
+
+                <AuthedRoute path="/artist/channel"
+                    component={ArtistChannel}/>
+
+                <AuthedRoute path="/artist/videos"
+                    component={ArtistVideos}/>
+
+                <AuthedRoute path="/categories/blogs"
+                    component={CategoryBlogs}/>
+
+                <AuthedRoute path="/categories/channels"
+                    component={CategoryChannels}/>
+
+                <AuthedRoute path="/categories/videos"
+                    component={CategoryVideos}/>
+
+                <AuthedRoute path="/channels"
+                    component={Channels}/>
+
 
                 <Redirect to="/"/>
 

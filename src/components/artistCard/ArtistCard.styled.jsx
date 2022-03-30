@@ -62,10 +62,6 @@ export const Wrapper = styled.div `
     font-weight:600;
 }
 
-.follow-button:hover{
-    background:#2B5407;
-}
-
 .bottomIcons{
     display:flex;
     align-items:center;

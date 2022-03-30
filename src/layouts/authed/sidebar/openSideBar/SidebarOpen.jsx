@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
     RiseOutlined,
     BarChartOutlined,
@@ -11,7 +11,8 @@ import {
     ProfileOutlined,
     PlayCircleOutlined,
     WifiOutlined,
-    HomeFilled
+    HomeFilled,
+    CaretDownOutlined
 } from '@ant-design/icons';
 import {SocialIcon} from 'react-social-icons';
 import {Switch} from 'antd';
@@ -21,6 +22,9 @@ import {useHistory} from "react-router-dom"
 function SidebarOpen() {
 
     const history = useHistory();
+
+    const [showArtist, setShowArtist] = useState(false);
+    const [showCategory, setShowCategory] = useState(false);
 
 
     return (
@@ -224,15 +228,22 @@ function SidebarOpen() {
                         Videos
                     </p>
                 </div>
-                <div className='openTab'>
-                    <FileOutlined style={
+                <div onClick={
+                        () => {
+                            history.push("/channels")
+                        }
+                    }
+                    className={
+                        history.location.pathname == '/channels' ? 'active openTab' : 'openTab'
+                }>
+                    <FileOutlined style={   
                         {
                             fontSize: '20px',
                             color: "#8f908f"
                         }
                     }/>
                     <p>
-                        Channel
+                        Channels
                     </p>
                 </div>
                 <div onClick={
@@ -270,8 +281,15 @@ function SidebarOpen() {
                     <p>
                         Audio
                     </p>
+
                 </div>
-                <div className='openTab'>
+                <div className='openTab'
+                    onClick={
+                        (e) => {
+                            setShowArtist(!showArtist);
+                            setShowCategory(false)
+                        }
+                }>
                     <UserOutlined style={
                         {
                             fontSize: '20px',
@@ -281,8 +299,58 @@ function SidebarOpen() {
                     <p>
                         Artists
                     </p>
+                    <CaretDownOutlined style={
+                        {
+                            fontSize: '12px',
+                            color: "#fff",
+                            marginLeft: "5px",
+                            marginTop: "5px"
+                        }
+                    }/>
                 </div>
-                <div className='openTab'>
+
+                {
+                showArtist ? <div onClick={
+                        () => {
+                            history.push("/artist/channel")
+                        }
+                    }
+                    className={
+                        history.location.pathname == '/artist/channel' ? 'active openTab' : 'openTab'
+                    }
+                    style={
+                        {marginLeft: "20px"}
+                }>
+                    <p>
+                        Channel
+                    </p>
+                </div> : ""
+            }
+
+                {
+                showArtist ? <div onClick={
+                        () => {
+                            history.push("/artist/videos")
+                        }
+                    }
+                    className={
+                        history.location.pathname == '/artist/videos' ? 'active openTab' : 'openTab'
+                    }
+                    style={
+                        {marginLeft: "20px"}
+                }>
+                    <p>
+                        Videos
+                    </p>
+                </div> : ""
+            }
+                <div className='openTab'
+                    onClick={
+                        (e) => {
+                            setShowCategory(!showCategory)
+                            setShowArtist(false)
+                        }
+                }>
                     <ProfileOutlined style={
                         {
                             fontSize: '20px',
@@ -292,7 +360,70 @@ function SidebarOpen() {
                     <p>
                         Categories
                     </p>
+                    <CaretDownOutlined style={
+                        {
+                            fontSize: '12px',
+                            color: "#fff",
+                            marginLeft: "5px",
+                            marginTop: "5px"
+                        }
+                    }/>
                 </div>
+
+                {
+                showCategory ? <div onClick={
+                        () => {
+                            history.push("/categories/blogs")
+                        }
+                    }
+                    className={
+                        history.location.pathname == '/categories/blogs' ? 'active openTab' : 'openTab'
+                    }
+                    style={
+                        {marginLeft: "20px"}
+                }>
+                    <p>
+                        Blogs
+                    </p>
+                </div> : ""
+            }
+
+                {
+                showCategory ? <div onClick={
+                        () => {
+                            history.push("/categories/channels")
+                        }
+                    }
+                    className={
+                        history.location.pathname == '/categories/channels' ? 'active openTab' : 'openTab'
+                    }
+                    style={
+                        {marginLeft: "20px"}
+                }>
+                    <p>
+                        Channels
+                    </p>
+                </div> : ""
+            }
+
+                {
+                showCategory ? <div onClick={
+                        () => {
+                            history.push("/categories/videos")
+                        }
+                    }
+                    className={
+                        history.location.pathname == '/categories/videos' ? 'active openTab' : 'openTab'
+                    }
+                    style={
+                        {marginLeft: "20px"}
+                }>
+                    <p>
+                        Videos
+                    </p>
+                </div> : ""
+            }
+
                 <div className='openTab'>
                     <WifiOutlined style={
                         {

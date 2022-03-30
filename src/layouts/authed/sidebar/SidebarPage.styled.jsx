@@ -19,6 +19,7 @@ transition-timing-function: ease-in-out;
     width:100%;
     padding-bottom: 80px;
     overflow-y:auto;
+    overflow-x:hidden;
 }
 
 
