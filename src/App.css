@@ -30,9 +30,6 @@ body{
   color: #61dafb;
 }
 
-.drawer{
-  margin-top: -1px;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -42,14 +39,52 @@ body{
     transform: rotate(360deg);
   }
 }
-.ant-popover-content{
-  min-width: 350px;
+
+.ant-modal{
+  width: 800px !important;
 }
 
-@media (max-width: 1000px){
-  .notificationPopover > .ant-popover-content {
-    min-width: 275px;
-  }
+.ant-modal-body{
+  padding:2rem;
+}
+
+.ant-modal-close-x{
+  background-color: #2B5407;
+  color: #fff;
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: relative;
+  top: -12px;
+  right: -12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-modal-close-x > .anticon svg{
+  width:0.8em;
+  height:0.8em;
+}
+
+.ant-modal-content{
+  border-radius: 20px !important;
+}
+
+.ant-modal-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100% - 150px);
+}
+
+
+
+
+.ant-popover-title{
+  padding:15px;
+  font-weight: bold;
 }
 
 .ant-popover-title{
@@ -57,35 +92,37 @@ body{
   font-weight: bold;
 }
 
-
-/* .notificationPopover{
-  left:1010px !important;
-  top:50px !important;
-} */
-
-
-.guppyDetails {
-    display:flex;
-    align-items:center;
-    margin-bottom:15px;
-    border-bottom:1px solid #d8d8d8;
-    padding-bottom:10px;
-
+.settingPopover .ant-popover-content{
+  min-width: 150px;
 }
 
-.guppyDetails > h4{
-  margin:0px;
+.settingPopover .ant-popover-inner-content{
+  padding: 00px;
+}
+.settingDetails{
+  display:flex;
+  flex-direction:column;
+}
+
+.settingDetails > span {
+  padding: 8px 15px;
+  border-bottom:1px solid #d8d8d8;
   font-weight:bold;
-  margin-right:10px;
+  cursor: pointer;
 }
 
-.successBtn > .ant-btn-primary{
-  background: #1565C0;
-  color: white;
-  border-radius: 3px;
-  border:none;
-  width:100%;
+.settingDetails > span:hover{
+  color:#2B5407;
 }
+
+.settingDetails > .logout{
+  border-bottom:none;
+}
+
+
+
+
+
 
 /* width */
 ::-webkit-scrollbar {

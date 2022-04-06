@@ -1,22 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Wrapper} from './TopHeader.styled';
 import {Input} from 'antd';
 import {SearchOutlined} from '@ant-design/icons';
-import info from "../../../assets/icons/info.svg"
-import video from "../../../assets/icons/video.svg"
+import {Popover} from 'antd';
+import {useHistory} from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux";
+import LoginModal from '../../../components/loginModal/LoginModal';
 import caretIcon from "../../../assets/icons/caretIcon.svg"
 import profile from "../../../assets/icons/profile.svg"
-import {useDispatch, useSelector} from "react-redux";
 import logo from "../../../assets/images/logo.png";
-import {useHistory} from 'react-router-dom';
 import hamBurgerIcon from "../../../assets/icons/hamBurger.svg"
 
 
 export default function IndexPage() {
     const dispatch = useDispatch();
     const isCollapse = useSelector((state) => state.common.isCollapse);
-    const history = useHistory();
-    console.log(isCollapse)
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     const suffix = (
         <SearchOutlined style={
@@ -26,6 +26,20 @@ export default function IndexPage() {
             }
         }/>
     );
+
+    const settingContent = (
+        <div className='settingDetails'>
+            <span onClick={
+                () => setIsModalVisible(true)
+            }>
+                Login
+            </span>
+            <span>
+                Signup
+            </span>
+        </div>
+    );
+
 
     return (
         <Wrapper>
@@ -61,16 +75,30 @@ export default function IndexPage() {
                     suffix={suffix}/>
             </div>
 
+            
+            <Popover content={settingContent}
+                placement="topRight"
+                overlayClassName='settingPopover'>
 
-            <div className="topBarIcons">
+                <div className="topBarIcons">
 
-                <img src={profile}/>
-                <img className='caretIcon' src={caretIcon}/>
+                    <img src={profile}/>
+                    <img className='caretIcon'
+                        src={caretIcon}/>
 
-            </div>
+                </div>
+
+            </Popover>
 
         </div>
-
-    </Wrapper>
+        {
+        isModalVisible && <LoginModal isModalVisible
+            onCancel={
+                () => setIsModalVisible(false)
+            }
+            onClick={
+                () => setIsModalVisible(false)
+            }/>
+    } </Wrapper>
     );
 }
